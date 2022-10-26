@@ -1,0 +1,58 @@
+fileFormatVersion: 2
+guid: a4978ab72726c4b44812e0df7c81de01
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Character_Controller_1 = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nclass VideoTest extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Start() {\\r\\n        this.StartCoroutine(this.Init());\\r\\n   
+    }\\r\\n    *Init() {\\r\\n        this.npcTransform = new Array(this.gameObject.transform.childCount);\\r\\n       
+    for (let i = 0; i < this.gameObject.transform.childCount; i++) {\\r\\n           
+    this.npcTransform[i] = this.gameObject.transform.GetChild(i).transform;\\r\\n       
+    }\\r\\n        if (this._npcID.length != this.npcTransform.length)\\r\\n           
+    console.log('\uB4F1\uB85D\uD55C NPC\uC544\uC774\uB514 \uAC1C\uC218\uC640 NPCTransform
+    \uAC1C\uC218\uAC00 \uB9DE\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.');\\r\\n        this.npcCharacter
+    = new Array(this._npcID.length);\\r\\n        for (let i = 0; i < this.npcTransform.length;
+    i++) {\\r\\n            if (this.npcTransform[i].gameObject.GetComponent($typeof(UnityEngine_1.MeshRenderer))
+    != null)\\r\\n                UnityEngine_1.GameObject.Destroy(this.npcTransform[i].gameObject.GetComponent($typeof(UnityEngine_1.MeshRenderer)));\\r\\n       
+    }\\r\\n        this.SpwanNPC();\\r\\n        yield new UnityEngine_1.WaitUntil(()
+    => {\\r\\n            if (this.npcCharacter[this.npcCharacter.length - 1] !=
+    null) {\\r\\n                return true;\\r\\n            }\\r\\n           
+    return false;\\r\\n        });\\r\\n        yield new UnityEngine_1.WaitForSeconds(1);\\r\\n       
+    this.index = 0;\\r\\n        this.StartCoroutine(this.AnimationPlay());\\r\\n   
+    }\\r\\n    SpwanNPC() {\\r\\n        for (let i = 0; i < this._npcID.length;
+    i++) {\\r\\n            var npcSpawnInfo = new ZEPETO_Character_Controller_1.SpawnInfo();\\r\\n           
+    npcSpawnInfo.position = this.npcTransform[i].position;\\r\\n            npcSpawnInfo.rotation
+    = this.npcTransform[i].rotation;\\r\\n            ZEPETO_Character_Controller_1.ZepetoCharacterCreator.CreateByZepetoId(this._npcID[i],
+    npcSpawnInfo, (character) => {\\r\\n                this.npcCharacter[i] = character;\\r\\n           
+    });\\r\\n        }\\r\\n    }\\r\\n    *AnimationPlay() {\\r\\n        for (let
+    i = 0; i < this._npcID.length; i++) {\\r\\n            if (this.npcCharacter[i]
+    != null) {\\r\\n                this.npcCharacter[i].SetGesture(this.npcAnimation[this.index]);\\r\\n           
+    }\\r\\n            else {\\r\\n                console.log(i + '\uBC88 \uCE90\uB9AD\uD130
+    \uC5C6\uC74C');\\r\\n            }\\r\\n        }\\r\\n        yield new UnityEngine_1.WaitForSeconds(this.npcAnimation[this.index].length);\\r\\n       
+    yield new UnityEngine_1.WaitForSeconds(this.GetWaitTime());\\r\\n        if (this.index
+    == this.npcAnimation.length - 1) {\\r\\n            this.index = 0;\\r\\n       
+    }\\r\\n        else {\\r\\n            this.index++;\\r\\n        }\\r\\n       
+    this.StartCoroutine(this.AnimationPlay());\\r\\n    }\\r\\n    GetWaitTime()
+    {\\r\\n        if (this.waitTime < 0)\\r\\n            this.waitTime = 0;\\r\\n       
+    return this.waitTime;\\r\\n    }\\r\\n}\\r\\nexports.default = VideoTest;\\r\\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVmlkZW9UZXN0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiVmlkZW9UZXN0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQTRHO0FBQzVHLDZFQUFpRztBQUNqRyxpREFBc0Q7QUFHdEQsTUFBcUIsU0FBVSxTQUFRLHFDQUFxQjtJQVd4RCxLQUFLO1FBQ0QsSUFBSSxDQUFDLGNBQWMsQ0FBQyxJQUFJLENBQUMsSUFBSSxFQUFFLENBQUMsQ0FBQztJQUNyQyxDQUFDO0lBRUQsQ0FBRSxJQUFJO1FBQ0YsSUFBSSxDQUFDLFlBQVksR0FBRyxJQUFJLEtBQUssQ0FBWSxJQUFJLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxVQUFVLENBQUMsQ0FBQztRQUMvRSxLQUFJLElBQUksQ0FBQyxHQUFHLENBQUMsRUFBRyxDQUFDLEdBQUcsSUFBSSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsVUFBVSxFQUFHLENBQUMsRUFBRSxFQUFDO1lBQzNELElBQUksQ0FBQyxZQUFZLENBQUMsQ0FBQyxDQUFDLEdBQUcsSUFBSSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDLFNBQVMsQ0FBQztTQUMxRTtRQUVELElBQUcsSUFBSSxDQUFDLE1BQU0sQ0FBQyxNQUFNLElBQUksSUFBSSxDQUFDLFlBQVksQ0FBQyxNQUFNO1lBQzdDLE9BQU8sQ0FBQyxHQUFHLENBQUMsMENBQTBDLENBQUMsQ0FBQztRQUU1RCxJQUFJLENBQUMsWUFBWSxHQUFHLElBQUksS0FBSyxDQUFrQixJQUFJLENBQUMsTUFBTSxDQUFDLE1BQU0sQ0FBQyxDQUFDO1FBQ25FLEtBQUksSUFBSSxDQUFDLEdBQUcsQ0FBQyxFQUFHLENBQUMsR0FBRyxJQUFJLENBQUMsWUFBWSxDQUFDLE1BQU0sRUFBRyxDQUFDLEVBQUUsRUFBQztZQUMvQyxJQUFHLElBQUksQ0FBQyxZQUFZLENBQUMsQ0FBQyxDQUFDLENBQUMsVUFBVSxDQUFDLFlBQVksU0FB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\",\"assetPath\":\"Assets/VideoTest.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"mscorlib\",\"name\":\"_npcID\",\"type\":\"System.String[]\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"SerializeField\",\"args\":[]}]},{\"assembly\":\"UnityEngine.AnimationModule\",\"name\":\"npcAnimation\",\"type\":\"UnityEngine.AnimationClip[]\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"SerializeField\",\"args\":[]}]},{\"assembly\":\"mscorlib\",\"name\":\"waitTime\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"SerializeField\",\"args\":[]}]}],\"name\":\"VideoTest\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 75b9923641ca2bb9436e8764caae8446
+  onlyWriteTrigger: 0
