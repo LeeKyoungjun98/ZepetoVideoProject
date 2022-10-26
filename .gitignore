@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Mm]emoryCaptures/
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Bb]uild/
+**/[Bb]uilds/
+**/[Ll]ogs/
+**/[Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -58,3 +58,17 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Zepeto_Normal
+*.zip
+*.zip.meta
+.vsconfig
+tsconfig.json
+EditorUserBuildSettings.asset
+ZepetoMultiplayServer.logs.txt
+
+# Zepeto_KWonderLand
+ZepetoVideoProject/.idea/
+ZepetoVideoProject/node_modules/
+ZepetoVideoProject/.vscode/
+ZepetoVideoProject/UserSettings/
+ZepetoVideoProject/Assets/AmplifyShaderEditor
